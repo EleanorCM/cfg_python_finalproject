@@ -23,8 +23,15 @@ def get_exclusion_parameters():     # prompts user to input food items to exclud
 
 
 def get_dietary_requirements():               # asks user to enter any dietary requirements
-  example_reqs = ["vegan", "vegetarian", "gluten-free", "alcohol-free"]
-  diet_reqs = input(f"Do you have any dietary requirements? Please choose from the following options, or type 'N' if none...\n{example_reqs}: ")
+  reqs = input("Special dietary requirements: Enter 'y' to view all dietary labels, eg. vegan, vegetarian, gluten-free:\n")
+  if reqs.lower() == "y":
+      print("\n─── Health Labels ───")
+      h_labels = enumerate(hit['recipe']['healthLabels'])         # Retreives health labels, enumerates,
+      for i, hl in h_labels:                                      # prints without newline, and adds newline
+        print(" ✓ ",hl, end='')                                   # after every sixth health label
+        if i % 6 == 5:
+          print("\n", end='')
+
   while (diet_reqs != "N" and diet_reqs != "n") and (diet_reqs not in example_reqs):
     diet_reqs = input(
         f"Invalid response. Choose your dietary requirement from the following options, or type 'N' if none...\n{example_reqs}: ")
@@ -67,12 +74,6 @@ def print_results(res):
     for ingred_text in ingred_list:                             # Prints ingredients
       print(ingred_text)
 
-    print("\n─── Health Labels ───")
-    h_labels = enumerate(hit['recipe']['healthLabels'])         # Retreives health labels, enumerates,
-    for i, hl in h_labels:                                      # prints without newline, and adds newline
-      print(" ✓ ",hl, end='')                                   # after every sixth health label
-      if i % 6 == 5:
-        print("\n", end='')
   return
 
 def run():                                          # executes program
