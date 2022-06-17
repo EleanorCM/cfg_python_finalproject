@@ -22,6 +22,8 @@ def get_exclusion_parameters():     # prompts user to input food items to exclud
     return None
 
 
+# This code is useless right now - need to re-jig it to print a full list of available health labels from a dictionary which can be used to append the correct key onto the URL
+
 def get_dietary_requirements():               # asks user to enter any dietary requirements
   reqs = input("Special dietary requirements: Enter 'y' to view all dietary labels, eg. vegan, vegetarian, gluten-free:\n")
   if reqs.lower() == "y":
